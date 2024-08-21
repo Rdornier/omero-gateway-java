@@ -130,12 +130,12 @@ public class TransferFacilityHelper {
         if (image.isFSImage()) {
             for (Object tmp : filesets) {
                 Fileset fs = (Fileset) tmp;
-                String fs_dir = "Fileset_"+fs.getId().getValue();
+                String fsDir = "Fileset_"+fs.getId().getValue();
                 String repoPath = fs.getTemplatePrefix().getValue();
                 for (FilesetEntry fse: fs.copyUsedFiles()) {
                     OriginalFile of = fse.getOriginalFile();
                     String ofDir = of.getPath().getValue().replace(repoPath, "");
-                    File outDir = new File(targetPath+File.separator+ofDir+File.separator+fs_dir);
+                    File outDir = new File(targetPath+File.separator+fsDir+File.separator+ofDir);
                     outDir.mkdirs();
                     File saved = saveOriginalFile(context, of, outDir);
                     if (saved != null)
